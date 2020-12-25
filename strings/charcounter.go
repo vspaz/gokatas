@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func foo() {
 	someString := "foobarbazzzzfufufuf"
 	charToCount := map[int32]int{}
 	for _, char := range(someString) {
