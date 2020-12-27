@@ -1,6 +1,6 @@
 package strings
 
-func countCharacters(text string) map[int32]int {
+func countChars(text string) map[int32]int {
 	charToCount := map[int32]int{}
 	for _, char := range(text) {
 		count, _ := charToCount[char]
@@ -8,4 +8,3 @@ func countCharacters(text string) map[int32]int {
 	}
 	return charToCount
 }
-
