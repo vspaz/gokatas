@@ -4,7 +4,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
-import _ "github.com/stretchr/testify/assert"
 
 func TestGetFirstNonRepeatedCharacterWithOneNonRepeatedCharacter(t *testing.T) {
 	got := GetFirstNonRepeatedCharacter("aabbcdd")
