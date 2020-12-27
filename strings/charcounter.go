@@ -1,15 +1,11 @@
 package strings
 
-import "fmt"
-
-func foo() {
-	someString := "foobarbazzzzfufufuf"
+func countCharacters(text string) map[int32]int {
 	charToCount := map[int32]int{}
-	for _, char := range(someString) {
+	for _, char := range(text) {
 		count, _ := charToCount[char]
 		charToCount[char] = count + 1
 	}
-	for char, count := range(charToCount) {
-        fmt.Printf("%c => %d\n", char, count)
-	}
+	return charToCount
 }
+
