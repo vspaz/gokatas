@@ -9,7 +9,7 @@ func TestCountChars(t *testing.T) {
 	reflect.DeepEqual(expected, got)
 }
 func TestCountCharsEmptyString(t *testing.T) {
-got := countChars("")
-expected := map[int32]int{}
-reflect.DeepEqual(expected, got)
+    got := countChars("")
+    expected := map[int32]int{}
+    reflect.DeepEqual(expected, got)
 }
