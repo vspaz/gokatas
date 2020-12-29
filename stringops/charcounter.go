@@ -1,4 +1,4 @@
-package strings
+package stringops
 
 func countChars(text string) map[string]int {
 	charToCount := map[string]int{}
