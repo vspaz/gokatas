@@ -12,3 +12,11 @@ func TestConcatWithSeparator(t *testing.T) {
 		Concat(".", "foo", "bar", "baz"),
 	)
 }
+
+func TestConcatWithoutSeparator(t *testing.T) {
+	assert.Equal(
+		t,
+		"foobarbaz",
+		Concat("", "foo", "bar", "baz"),
+	)
+}
