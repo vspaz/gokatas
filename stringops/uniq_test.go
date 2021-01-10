@@ -3,11 +3,10 @@ package stringops
 import (
 	"bufio"
 	"bytes"
+	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
-	"github.com/stretchr/testify/assert"
 )
-
 
 func TestUniqWithSortedElementsOK(t *testing.T) {
 	sortedElements := "1\n2\n3\n4\n5\n6"
