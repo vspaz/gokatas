@@ -9,15 +9,15 @@ type cars struct {
 }
 
 
-func getCar(car string) (iCar, error) {
+func getCar(car string) (ICar, error) {
 	carMakes := &cars{AUDI: "AUDI", BMW: "BMW", FORD: "FORD"}
 	switch car {
 	case carMakes.AUDI:
-		return NewAUID()
+		return NewAUDI(), nil
 	case carMakes.BMW:
-		return NewBMW()
+		return NewBMW(), nil
 	case carMakes.FORD:
-		return NewFord()
+		return NewFord(), nil
 	default:
 		return nil, fmt.Errorf("'%s' is undefined", car)
 	}

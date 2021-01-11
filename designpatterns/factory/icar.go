@@ -1,9 +1,9 @@
 package factory
 
 
-type iCar interface {
-	setName(name string)
-	getName() string
+type ICar interface {
+	setMake(make string)
+	getMake() string
 	setSpeed(speed int)
 	getSpeed() int
 }
