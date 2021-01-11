@@ -22,3 +22,10 @@ func TestNewCarFactoryBMWOK(t *testing.T) {
 	bmw, _ := carFactory.getCar("BMW")
 	assert.Equal(t, &BMW{car: car{make: "", speed: 0}}, bmw)
 }
+
+func TestNewCarFactoryUndefMake(t *testing.T) {
+	carFactory := NewCarFactory()
+	undefMake, err := carFactory.getCar("undef")
+	assert.Equal(t, nil, undefMake)
+	assert.NotEqual(t, nil, err)
+}
