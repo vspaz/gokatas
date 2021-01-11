@@ -22,14 +22,14 @@ func NewCarFactory() *CarFactory {
 	}
 }
 
-func (factory *CarFactory) getCar(car string) (ICar, error) {
+func (cf *CarFactory) getCar(car string) (ICar, error) {
 	switch car {
-	case factory.makes.AUDI:
+	case cf.makes.AUDI:
 		return NewAUDI(), nil
-	case factory.makes.BMW:
+	case cf.makes.BMW:
 		return NewBMW(), nil
-	case factory.makes.FORD:
-		return NewFord(), nil
+	case cf.makes.FORD:
+		return NewFORD(), nil
 	default:
 		return nil, fmt.Errorf("'%s' is undefined", car)
 	}
