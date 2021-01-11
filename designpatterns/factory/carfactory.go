@@ -8,15 +8,27 @@ type cars struct {
 	FORD string
 }
 
+type CarFactory struct {
+	makes cars
+}
 
-func getCar(car string) (ICar, error) {
-	carMakes := &cars{AUDI: "AUDI", BMW: "BMW", FORD: "FORD"}
+func NewCarFactory() *CarFactory {
+	return &CarFactory{
+		cars{
+			AUDI: "AUDI",
+			BMW:  "BMW",
+			FORD: "FORD",
+		},
+	}
+}
+
+func (factory *CarFactory) getCar(car string) (ICar, error) {
 	switch car {
-	case carMakes.AUDI:
+	case factory.makes.AUDI:
 		return NewAUDI(), nil
-	case carMakes.BMW:
+	case factory.makes.BMW:
 		return NewBMW(), nil
-	case carMakes.FORD:
+	case factory.makes.FORD:
 		return NewFord(), nil
 	default:
 		return nil, fmt.Errorf("'%s' is undefined", car)
