@@ -29,3 +29,18 @@ func TestNewCarFactoryUndefMake(t *testing.T) {
 	assert.Equal(t, nil, undefMake)
 	assert.NotEqual(t, nil, err)
 }
+
+func TestNewCarFactoryMethods(t *testing.T) {
+	carFactory := NewCarFactory()
+	ford, err := carFactory.getCar("FORD")
+
+	assert.Equal(t, nil, err)
+
+	carMake := "trailblazer"
+	ford.setMake(carMake)
+	assert.Equal(t, carMake, ford.getMake())
+
+	carSpeed := 250
+	ford.setSpeed(carSpeed)
+	assert.Equal(t, carSpeed, ford.getSpeed())
+}
