@@ -16,3 +16,9 @@ func TestNewCarFactoryAudiOK(t *testing.T) {
 	audi, _ := carFactory.getCar("AUDI")
 	assert.Equal(t, &AUDI{car: car{make: "", speed: 0}}, audi)
 }
+
+func TestNewCarFactoryBMWOK(t *testing.T) {
+	carFactory := NewCarFactory()
+	bmw, _ := carFactory.getCar("BMW")
+	assert.Equal(t, &BMW{car: car{make: "", speed: 0}}, bmw)
+}
