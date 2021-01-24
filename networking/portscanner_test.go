@@ -9,8 +9,8 @@ import (
 
 func testSetup(server *Server, t *testing.T) {
 	conn, err := net.Dial(
-		server.Protocol,
-		fmt.Sprintf("%s:%d", server.Address, server.Port),
+		server.protocol,
+		fmt.Sprintf("%s:%d", server.host, server.port),
 	)
 	if err != nil {
 		t.Errorf("error: %s", err)
@@ -20,9 +20,9 @@ func testSetup(server *Server, t *testing.T) {
 
 func TestScanUDPOk(t *testing.T) {
 	serverInfo := &Server{
-		Protocol: "udp",
-		Address:  "localhost",
-		Port:     80,
+		protocol: "udp",
+		host:  "localhost",
+		port:     80,
 	}
 	go testSetup(serverInfo, t)
 	_, err := Scan(serverInfo)
@@ -31,9 +31,9 @@ func TestScanUDPOk(t *testing.T) {
 
 func TestScanTCPOK(t *testing.T) {
 	serverInfo := &Server{
-		Protocol: "tcp",
-		Address:  "localhost",
-		Port:     80,
+		protocol: "tcp",
+		host:  "localhost",
+		port:     80,
 	}
 	go testSetup(serverInfo, t)
 	_, err := Scan(serverInfo)

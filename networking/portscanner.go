@@ -6,15 +6,15 @@ import (
 )
 
 type Server struct {
-	Protocol string
-	Address  string
-	Port     int
+	protocol string
+	host     string
+	port     int
 }
 
 func Scan(server *Server) (net.Conn, error) {
 	conn, err := net.Dial(
-		server.Protocol,
-		fmt.Sprintf("%s:%d", server.Address, server.Port),
+		server.protocol,
+		fmt.Sprintf("%s:%d", server.host, server.port),
 	)
 	if err != nil {
 		return nil, fmt.Errorf("error: %s", err)
