@@ -16,7 +16,6 @@ func TestUniqWithSortedElementsOK(t *testing.T) {
 	assert.Equal(t, nil, err, "failed")
 }
 
-
 func TestUniqWithUnsortedElementsFail(t *testing.T) {
 	unsortedElements := "1\n10\n\n2\n"
 	in := bufio.NewReader(strings.NewReader(unsortedElements))
