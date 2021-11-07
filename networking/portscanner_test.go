@@ -21,7 +21,7 @@ func testSetup(server *Server, t *testing.T) {
 func TestScanUDPOk(t *testing.T) {
 	serverInfo := &Server{
 		protocol: "udp",
-		host:  "localhost",
+		host:     "localhost",
 		port:     80,
 	}
 	go testSetup(serverInfo, t)
@@ -32,7 +32,7 @@ func TestScanUDPOk(t *testing.T) {
 func TestScanTCPOK(t *testing.T) {
 	serverInfo := &Server{
 		protocol: "tcp",
-		host:  "localhost",
+		host:     "localhost",
 		port:     80,
 	}
 	go testSetup(serverInfo, t)
