@@ -17,3 +17,20 @@ func Merge(left []int, right []int) []int {
 	}
 	return merged
 }
+
+func MergeSort(data []int) []int {
+	if len(data) <= 1 {
+		return data
+	}
+	done := make(chan bool)
+	mid := len(data) / 2
+	var left []int
+
+	go func() {
+		left = MergeSort(data[:mid])
+		done <- true
+	}()
+	right := MergeSort(data[mid:])
+	<-done
+	return Merge(left, right)
+}
