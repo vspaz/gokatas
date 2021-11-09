@@ -29,7 +29,7 @@ func TestGoroutineBlocked(t *testing.T) {
 		start := time.Now()
 		assert.Equal(t, fmt.Sprintf("worker 2; message '%d'", i), <-channel_2)
 		end := time.Now()
-		assert.GreaterOrEqual(t, waitInterval, end.Second()-start.Second()) // blocked
+		assert.GreaterOrEqual(t, waitInterval, end.Second()-start.Second()) // blocked for waitInterval seconds.
 		assert.Equal(t, fmt.Sprintf("worker 1; message '%d'", i), <-channel_1)
 	}
 }
