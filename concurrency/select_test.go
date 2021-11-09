@@ -58,5 +58,22 @@ func TestGoroutineNonBlocking(t *testing.T) {
 }
 
 func TestSelectDefault(t *testing.T) {
+	channel_1 := make(chan string)
+	channel_2 := make(chan string)
 
+	go worker(1, channel_1, time.Second*2)
+	go worker(2, channel_2, time.Second*2)
+
+	var count int
+	for i := 0; i < 5; i++ {
+		select {
+		case _ = <-channel_1:
+		case _ = <-channel_2:
+		default:
+			assert.Equal(t, count, i)
+			count++
+			channel_1 = nil
+			channel_2 = nil
+		}
+	}
 }
