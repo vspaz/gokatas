@@ -7,6 +7,13 @@ import (
 	"time"
 )
 
+func worker(id string, channel chan string, waitInterval time.Duration) {
+	for i := 0; i < 5; i++ {
+		channel <- fmt.Sprintf("worker %d; message '%d'", id, i)
+		time.Sleep(waitInterval)
+	}
+}
+
 func TestSelect(t *testing.T) {
 	channel_1 := make(chan string)
 	channel_2 := make(chan string)
