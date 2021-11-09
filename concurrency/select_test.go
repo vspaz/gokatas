@@ -2,6 +2,7 @@ package concurrency
 
 import (
 	"fmt"
+	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
 )
@@ -12,14 +13,19 @@ func TestSelect(t *testing.T) {
 
 	go func() {
 		for i := 0; i < 5; i++ {
-			channel_1 <- fmt.Sprintf("worker 1; message '%s'", i)
+			channel_1 <- fmt.Sprintf("worker 1; message '%d'", i)
 			time.Sleep(time.Millisecond * 100)
 		}
 	}()
 
 	go func() {
 		for i := 0; i < 5; i++ {
-			channel_2 <- fmt.Sprintf("worker 2; message '%s'", i)
+			channel_2 <- fmt.Sprintf("worker 2; message '%d'", i)
 		}
 	}()
+
+	for i := 0; i < 5; i++ {
+		assert.Equal(t, fmt.Sprintf("worker 1; message '%d'", i), <-channel_1)
+		assert.Equal(t, fmt.Sprintf("worker 2; message '%d'", i), <-channel_2)
+	}
 }
