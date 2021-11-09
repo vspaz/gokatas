@@ -56,3 +56,7 @@ func TestGoroutineNonBlocking(t *testing.T) {
 		}
 	}
 }
+
+func TestSelectDefault(t *testing.T) {
+
+}
