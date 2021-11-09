@@ -7,6 +7,10 @@ import (
 	"time"
 )
 
+var (
+	waitInterval = time.Second * 5
+)
+
 func worker(id int, channel chan string, waitInterval time.Duration) {
 	for i := 0; i < 5; i++ {
 		channel <- fmt.Sprintf("worker %d; message '%d'", id, i)
@@ -19,10 +23,13 @@ func TestSelect(t *testing.T) {
 	channel_2 := make(chan string)
 
 	go worker(1, channel_1, time.Millisecond*100)
-	go worker(2, channel_2, time.Second*5)
+	go worker(2, channel_2, waitInterval)
 
 	for i := 0; i < 5; i++ {
+		start := time.Now()
+		assert.Equal(t, fmt.Sprintf("worker 2; message '%d'", i), <-channel_2)
+		end := time.Now()
+		assert.GreaterOrEqual(t, waitInterval, end.Second()-start.Second())  // blocked for waitInterval
 		assert.Equal(t, fmt.Sprintf("worker 1; message '%d'", i), <-channel_1)
-		assert.Equal(t, fmt.Sprintf("worker 2; message '%d'", i), <-channel_2)  // blocking
 	}
 }
