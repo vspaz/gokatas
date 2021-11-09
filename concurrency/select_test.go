@@ -33,3 +33,7 @@ func TestGoroutineBlocked(t *testing.T) {
 		assert.Equal(t, fmt.Sprintf("worker 1; message '%d'", i), <-channel_1)
 	}
 }
+
+func TestGoroutineNonBlocking(t *testing.T) {
+
+}
