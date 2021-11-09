@@ -30,7 +30,7 @@ func TestGoroutineBlocked(t *testing.T) {
 		start := time.Now()
 		assert.Equal(t, fmt.Sprintf("worker 2; message '%d'", i), <-channel_2)
 		end := time.Now()
-		assert.GreaterOrEqual(t, waitIntervalForWorker_2, time.Duration(end.Second()-start.Second())) // blocked for waitInterval seconds.
+		assert.GreaterOrEqual(t, waitIntervalForWorker_2, time.Duration(end.Second()-start.Second())*time.Second) // blocked for waitInterval seconds.
 		assert.Equal(t, fmt.Sprintf("worker 1; message '%d'", i), <-channel_1)
 	}
 }
@@ -50,7 +50,7 @@ func TestGoroutineNonBlocking(t *testing.T) {
 			count++
 		case _ = <-channel_1:
 			end := time.Now()
-			assert.LessOrEqual(t, time.Duration(end.Second()-start.Second()), waitIntervalForWorker_1) // non-blocking
+			assert.LessOrEqual(t, time.Duration(end.Second()-start.Second())*time.Second, waitIntervalForWorker_1) // non-blocking
 			assert.Equal(t, i, count)
 			count++
 		}
