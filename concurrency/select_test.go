@@ -35,5 +35,19 @@ func TestGoroutineBlocked(t *testing.T) {
 }
 
 func TestGoroutineNonBlocking(t *testing.T) {
+	channel_1 := make(chan string)
+	channel_2 := make(chan string)
 
+	go worker(1, channel_1, time.Millisecond)
+	go worker(2, channel_2, waitInterval)
+
+	for i := 0; i < 5; i++ {
+		start := time.Now()
+		select {
+		case _ = <-channel_2:
+		case _ = <-channel_1:
+			end := time.Now()
+			assert.LessOrEqual(t, time.Duration(end.Second()-start.Second()), time.Second*1)  // non-blocking
+		}
+	}
 }
