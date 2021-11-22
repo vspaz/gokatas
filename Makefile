@@ -1,6 +1,6 @@
 .PHONY: test
 test:
-	go test ./...
+	go test ./... -v
 
 .PHONY: style-fix
 style-fix:
