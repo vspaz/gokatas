@@ -5,9 +5,11 @@ import (
 	"io"
 )
 
-func CountWords(reader io.Reader) int {
+func count(reader io.Reader, countLines bool) int {
 	scanner := bufio.NewScanner(reader)
-	scanner.Split(bufio.ScanWords)
+	if !countLines {
+		scanner.Split(bufio.ScanWords)
+	}
 	var wordCount int
 
 	for scanner.Scan() {
