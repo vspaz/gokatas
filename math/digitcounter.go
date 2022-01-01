@@ -1,12 +1,12 @@
 package math
 
 func getDigitCount(num int) int {
-	var digitCount int
+	count := 0
 	remainder := num
 
 	for remainder > 0 {
-		remainder = digitCount / 10
-		digitCount++
+		remainder /= 10
+		count++
 	}
-	return digitCount
+	return count
 }
