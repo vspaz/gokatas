@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
-func TestReverseDigit(t *testing.T) {
+func TestReverseDigitOk(t *testing.T) {
 	assert.Equal(t, 4321, ReverseDigit(1234))
+	assert.Equal(t, 1, ReverseDigit(1))
+	assert.Equal(t, 12, ReverseDigit(21))
 }
