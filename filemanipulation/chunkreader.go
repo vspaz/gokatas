@@ -17,7 +17,7 @@ func ReadLines(path string) {
 	for scanner.Scan() {
 		fmt.Printf("line: %s\n", scanner.Text())
 	}
-	if err := scanner.Err(); err != nil {
+	if err = scanner.Err(); err != nil {
 		fmt.Printf("error reading file: %s\n", err)
 	}
 }
